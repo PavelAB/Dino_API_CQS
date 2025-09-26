@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dino_API_Domain", "Dino_API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dino_API_Tools_CQS", "Dino_API_Tools_CQS\Dino_API_Tools_CQS.csproj", "{1ACA3566-1275-442B-84F6-D9F6043B1C22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dino_API_TestDomain", "Dino_API_TestDomain\Dino_API_TestDomain.csproj", "{E1B4AFE0-50ED-4DBB-AC47-DBDED1511F62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1ACA3566-1275-442B-84F6-D9F6043B1C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ACA3566-1275-442B-84F6-D9F6043B1C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACA3566-1275-442B-84F6-D9F6043B1C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B4AFE0-50ED-4DBB-AC47-DBDED1511F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B4AFE0-50ED-4DBB-AC47-DBDED1511F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B4AFE0-50ED-4DBB-AC47-DBDED1511F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B4AFE0-50ED-4DBB-AC47-DBDED1511F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
