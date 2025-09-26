@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dino_API_Tools_CQS.Queries
 {
-    internal interface IQueryHandler<TQuery, TResult>
+    public interface IQueryHandler<TQuery, TResult>
         where TQuery: IQueryDefinition<TResult>
     {
         TResult Execute(TQuery query);

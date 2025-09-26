@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dino_API_Tools_CQS.Commands
 {
-    internal interface ICommandHandler<TCommand>
+    public interface ICommandHandler<TCommand>
         where TCommand : ICommandDefinition
     {
         bool Execute(TCommand command);

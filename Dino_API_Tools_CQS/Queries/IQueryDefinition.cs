@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dino_API_Tools_CQS.Queries
 {
-    internal interface IQueryDefinition<TResult>
+    public interface IQueryDefinition<TResult>
     {
     }
 }
