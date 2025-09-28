@@ -1,4 +1,7 @@
 
+using Dino_API_Domain.Repositories;
+using Dino_API_Domain.Services;
+
 namespace Dino_API_CQS
 {
     public class Program
@@ -13,6 +16,7 @@ namespace Dino_API_CQS
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IDinoRepository, DinoService >();
 
             var app = builder.Build();
 
