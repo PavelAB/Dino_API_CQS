@@ -18,7 +18,9 @@ namespace Dino_API_TestDomain
                 .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
                 .Build();
 
-            Console.WriteLine("Valeur ConnectionString : " + configuration.GetConnectionString("localDb"));
+
+
+            //Console.WriteLine("Valeur ConnectionString : " + configuration.GetConnectionString("localDb"));
 
 
             ServiceCollection serviceCollection = new();
@@ -31,9 +33,13 @@ namespace Dino_API_TestDomain
 
             IDinoRepository dinoRepository = serviceProvider.GetService<IDinoRepository>();
 
-            var test = new CreateDinoCommand("test", 3.0, 3.0);
-            dinoRepository.Execute(test);
 
+            #region Create Dino
+
+            CreateDinoCommand newDino = new CreateDinoCommand("Triceratops", 6000, 300.0);
+            Console.WriteLine($"NewDino: {dinoRepository.Execute(newDino)}");
+
+            #endregion
 
         }
     }

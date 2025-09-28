@@ -19,17 +19,34 @@ namespace Dino_API_Domain.Services
         {
         }
 
-        public bool Execute(CreateDinoCommand command)
+        public bool Execute(CreateDinoCommand entity)
         {
             using (SqlConnection connection = new(_connectionString))
             {
-                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "INSERT INTO Dino (Spece, Weight, Size) " +
+                        "OUTPUT inserted.Id " +
+                        "VALUES (@Spece, @Weight, @Size)";
+                    command.Parameters.AddWithValue("Spece", entity.Spece);
+                    command.Parameters.AddWithValue("Weight", entity.Weight);
+                    command.Parameters.AddWithValue("Size", entity.Size);
 
-                Console.WriteLine("DB Connected");
-                connection.Close();
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+
+                }
 
             }
-            return true;
         }
     }
 }
