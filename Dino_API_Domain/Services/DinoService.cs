@@ -1,4 +1,7 @@
 ﻿using Dino_API_Domain.Commands;
+using Dino_API_Domain.Entities;
+using Dino_API_Domain.Mappers;
+using Dino_API_Domain.Queries;
 using Dino_API_Domain.Repositories;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -46,6 +49,27 @@ namespace Dino_API_Domain.Services
 
                 }
 
+            }
+        }
+
+        public IEnumerable<Dino> Execute(GetAllDinoQuery query)
+        {
+            using (SqlConnection connection = new(_connectionString))
+            {
+                using(SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Dino";
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToDino();
+                        }
+                    }
+                }
             }
         }
     }

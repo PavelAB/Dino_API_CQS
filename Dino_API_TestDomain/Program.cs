@@ -1,4 +1,6 @@
 ﻿using Dino_API_Domain.Commands;
+using Dino_API_Domain.Entities;
+using Dino_API_Domain.Queries;
 using Dino_API_Domain.Repositories;
 using Dino_API_Domain.Services;
 using Microsoft.Extensions.Configuration;
@@ -36,8 +38,21 @@ namespace Dino_API_TestDomain
 
             #region Create Dino
 
-            CreateDinoCommand newDino = new CreateDinoCommand("Triceratops", 6000, 300.0);
-            Console.WriteLine($"NewDino: {dinoRepository.Execute(newDino)}");
+            //CreateDinoCommand newDino = new CreateDinoCommand("Triceratops", 6000, 300.0);
+            //Console.WriteLine($"NewDino: {dinoRepository.Execute(newDino)}");
+
+            #endregion
+
+            #region GetAll
+
+            IEnumerable<Dino> dinos;
+
+            dinos = dinoRepository.Execute(new GetAllDinoQuery());
+
+            foreach(Dino dino in dinos)
+            {
+                Console.WriteLine($"ID: {dino.DinoID},  Espece : {dino.Spece}");
+            }
 
             #endregion
 
