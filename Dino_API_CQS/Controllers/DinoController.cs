@@ -1,5 +1,6 @@
 ﻿using Dino_API_CQS.Mappers;
 using Dino_API_CQS.Models.Dino;
+using Dino_API_Domain.Queries;
 using Dino_API_Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +21,9 @@ namespace Dino_API_CQS.Controllers
 
         // GET: api/<DinoController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_dinoRepository.Execute(new GetAllDinoQuery()));
         }
 
         // GET api/<DinoController>/5
