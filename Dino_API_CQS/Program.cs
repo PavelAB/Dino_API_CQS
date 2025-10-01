@@ -10,6 +10,21 @@ namespace Dino_API_CQS
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var MyFirstCors = "_myFirstCors";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: MyFirstCors,
+                    policy =>
+                    {
+                        policy.WithOrigins("https://localhost:7072")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -28,6 +43,8 @@ namespace Dino_API_CQS
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(MyFirstCors);
 
             app.UseAuthorization();
 
