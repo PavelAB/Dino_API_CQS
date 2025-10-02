@@ -28,9 +28,9 @@ namespace Dino_API_CQS.Controllers
 
         // GET api/<DinoController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            return Ok(_dinoRepository.Execute(new GetDinoQuery(id)));
         }
 
         // POST api/<DinoController>

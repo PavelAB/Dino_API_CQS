@@ -13,7 +13,8 @@ namespace Dino_API_Domain.Repositories
 {
     public interface IDinoRepository :
         ICommandHandler<CreateDinoCommand>,
-        IQueryHandler<GetAllDinoQuery, IEnumerable<Dino>>
+        IQueryHandler<GetAllDinoQuery, IEnumerable<Dino>>,
+        IQueryHandler<GetDinoQuery, Dino>
     {
     }
 }

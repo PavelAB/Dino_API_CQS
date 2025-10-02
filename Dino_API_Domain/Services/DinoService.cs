@@ -72,5 +72,30 @@ namespace Dino_API_Domain.Services
                 }
             }
         }
+
+        public Dino Execute(GetDinoQuery entity)
+        {
+            Dino dino = null;
+
+            using (SqlConnection connection = new(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Dino WHERE Id = @Id";
+                    command.Parameters.AddWithValue("@id", entity.Id);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if(reader.Read())
+                        {
+                            return reader.ToDino();
+                        }
+                        throw new ArgumentOutOfRangeException(nameof(entity.Id));
+                    }
+
+                }
+            }
+        }
     }
 }
